@@ -1,26 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import FetchData from "./Data"
 import './App.css';
+import FirstData from "./FirstData"
 
 class App extends Component {
+
+  constructor(){
+    super()
+    this.state = {
+      filter:""
+    }
+    
+    this.handleSubmit=this.handleSubmit.bind(this)
+  }
+
+
+
+  handleSubmit(e){
+     e.preventDefault();
+    let newFilter = this.refs["filter"].value
+    console.log(newFilter)
+    this.setState({
+      filter : newFilter
+    })
+  }
+
   render() {
+    const headingStyle={
+      textAlign: "center",
+      textTransform: "capitalize"
+    };
+    console.log(this.state.filter)
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+            <div>
+            <div>
+              <div className="filter-item">
+              <h2 style={headingStyle}>{this.state.filter}</h2>
+              <form onSubmit={this.handleSubmit}>
+              <input ref="filter" className="filter" type="text" name="filter"/>
+              <input type="submit" value="Search"/>
+              </form>
+              </div>
+              {this.state.filter ? <FetchData filterKey={this.state.filter}/> : <FirstData />}
+              
+            </div>
+            </div>
+
     );
   }
 }
