@@ -23,6 +23,7 @@ class App extends Component {
     this.setState({
       filter : newFilter
     })
+    window.history.pushState(null, null, newFilter);
   }
 
   render() {
@@ -33,7 +34,6 @@ class App extends Component {
     console.log(this.state.filter)
     return (
             <div>
-            <div>
               <div className="filter-item">
               <h2 style={headingStyle}>{this.state.filter}</h2>
               <form onSubmit={this.handleSubmit}>
@@ -43,7 +43,6 @@ class App extends Component {
               </div>
               {this.state.filter ? <FetchData filterKey={this.state.filter}/> : <FirstData />}
               
-            </div>
             </div>
 
     );
