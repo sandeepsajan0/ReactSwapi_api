@@ -1,6 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## ReactSwapi_api
+
+In this project, you will learn to deal with backend Api's and to handle json data.
+
+Here, First swapi api's fetch and then show the api's data in well manner with different URLs.
 
 In the project directory, you can run:
 
